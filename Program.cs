@@ -16,6 +16,7 @@ namespace gamepiece_freeze
             public int MinY { get; set; }
             public int MaxX { get; set; }
             public int MaxY { get; set; }
+            Random random = new Random();
 
             //constructor
             public GamePiece()
@@ -37,9 +38,10 @@ namespace gamepiece_freeze
                 }
                 else
                 {
-                    var random = new Random();
-                    PositionX = random.Next(0,100);
-                    PositionY = random.Next(0,500);
+
+                    //by setting a range of values on move we essentially never let them move out of the grid!
+                    PositionX = random.Next(0, 100);
+                    PositionY = random.Next(0, 500);
                 }
 
             }
@@ -57,7 +59,7 @@ namespace gamepiece_freeze
             piece1.Name = "Knight";
             piece1.Color = "Black";
             Console.WriteLine(piece1);
-            
+
             piece1.Freeze();
             Console.WriteLine(piece1);
 
@@ -65,6 +67,9 @@ namespace gamepiece_freeze
             Console.WriteLine(piece1);
 
             piece1.UnFreeze();
+            Console.WriteLine(piece1);
+
+            piece1.Move();
             Console.WriteLine(piece1);
 
             piece1.Move();
