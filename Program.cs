@@ -12,6 +12,10 @@ namespace gamepiece_freeze
             public int PositionX { get; set; }
             public int PositionY { get; set; }
             public bool Frozen { get; set; }
+            public int MinX { get; set; }
+            public int MinY { get; set; }
+            public int MaxX { get; set; }
+            public int MaxY { get; set; }
 
             //constructor
             public GamePiece()
@@ -19,9 +23,13 @@ namespace gamepiece_freeze
                 Frozen = false;
                 PositionX = 0;
                 PositionY = 0;
+                MinX = 0;
+                MaxX = 100;
+                MinY = 0;
+                MaxY = 500;
 
             }
-            public void Move(int newX, int newY)
+            public void Move()
             {
                 if (Frozen == true)
                 {
@@ -29,8 +37,9 @@ namespace gamepiece_freeze
                 }
                 else
                 {
-                    PositionX = newX;
-                    PositionY = newY;
+                    var random = new Random();
+                    PositionX = random.Next(0,100);
+                    PositionY = random.Next(0,500);
                 }
 
             }
@@ -52,13 +61,13 @@ namespace gamepiece_freeze
             piece1.Freeze();
             Console.WriteLine(piece1);
 
-            piece1.Move(1,3);
+            piece1.Move();
             Console.WriteLine(piece1);
 
             piece1.UnFreeze();
             Console.WriteLine(piece1);
 
-            piece1.Move(1,3);
+            piece1.Move();
             Console.WriteLine(piece1);
 
         }
